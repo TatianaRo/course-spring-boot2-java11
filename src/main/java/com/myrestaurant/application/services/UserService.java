@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.myrestaurant.application.entities.User;
 import com.myrestaurant.application.repositories.UserRepository;
+import com.myrestaurant.application.services.exceptions.ResourceNotFoundException.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -21,7 +22,7 @@ public class UserService {
 
 	public User findById(Long id){
 		Optional<User> obj =  userRepository.findById(id);
-		return obj.orElseThrow();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	public User insert(User user) {
@@ -42,7 +43,5 @@ public class UserService {
 		entity.setName(user.getName());
 		entity.setEmail(user.getEmail());
 		entity.setPhone(user.getPhone());		
-	}
-	
-	
+	}	
 }
