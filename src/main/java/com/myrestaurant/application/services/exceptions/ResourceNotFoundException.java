@@ -1,4 +1,4 @@
-package com.myrestaurant.application.services.exceptions.ResourceNotFoundException;
+package com.myrestaurant.application.services.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
 
